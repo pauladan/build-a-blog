@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <center><h1>Build a Blog</h1></center>
+        <p>&nbsp;</p>
+        {% if blogs|length == 0 %}
+            <p>No entries yet</p>
+        {% else %}
+            {% for blog in blogs%}
+            <form method='POST'>
+                <a href="/blog?id={{blog.id}}"><h3>{{blog.name}}</h3></a>
+                <input type="hidden" name="blog-id" value="{{blog.id}}" />
+                <h4>{{blog.body|truncate(150)}} </h4>
+            </form>    
+            <hr />
+            {% endfor %}    
+
+        {% endif %}
+
+{% endblock %}
